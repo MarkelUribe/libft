@@ -1,0 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 15:45:43 by muribe-l          #+#    #+#             */
+/*   Updated: 2023/12/13 15:23:11 by muribe-l         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+{
+	void	*o_dst;
+
+	o_dst = dst;
+	while (n > 0)
+	{
+		*(char *)dst = *(char *)src;
+		dst++;
+		src++;
+		n--;
+	}
+	return (o_dst);
+}
+/*
+#include <string.h>
+int	main()
+{
+	const char src[50] = "eunooon";
+   	char dest[50];
+	ft_memcpy(dest, src, 5);
+	printf("%s\n", dest);
+   
+   return(0);
+}*/
