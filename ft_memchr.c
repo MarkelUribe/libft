@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:57:48 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/12 15:17:27 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:03:00 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	ok;
-
-	ok = 0;
-	while (*(char *)s != c && *(char *)s != '\0' && n > 0)
+	while (s && n--)
 	{
-		s++;
-		n--;
 		if (*(char *)s == c)
-			ok = 1;
+			return ((char *)s);
+		s++;
 	}
-	if (ok)
-		return ((char *)s);
-	else
-		return (NULL);
+	return (NULL);
 }
 /*
 #include <string.h>
 int	main()
 {
 	char *s = "hoi nekie";
-	printf("%s", ft_memchr(s, 'j', 80));
+	printf("%s", ft_memchr("bonjour", 'b', 4));
 }*/

@@ -6,20 +6,22 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:50:08 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/13 18:41:08 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/14 14:16:49 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(
-		char *restrict dst,
-		const char *restrict src,
-		size_t dstsize)
+size_t	ft_strlcat(char *restrict dst,
+const char *restrict src,
+size_t dstsize)
 {
-	int	s;
+	size_t	s;
 
-	s = ft_strlen(src) + ft_strlen(dst);
+	s = ft_strlen(src);
+	s += ft_strlen(dst);
+	if (dstsize <= ft_strlen(dst))
+		return (ft_strlen(src) + dstsize);
 	dstsize--;
 	while (*dst != '\0')
 	{
@@ -39,12 +41,13 @@ size_t	ft_strlcat(
 /*
 int main()
 {
-    char str[11]= "kaixo";
-    char str2[] = "euuuuuuu";
+    char str[10]= "kgfgg";
+    char str2[] = "aaaaaaaaaaaaaaaaaaa";
     int s;
 
-    s = ft_strlcat(str, str2, 11);
+    s = ft_strlcat(str, str2, 67);
     printf("%s\n%d", str, s);
 
     return 0;
-}*/
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:09:26 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/12 15:16:44 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:10:56 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	while (n >= 0)
+	if (n == 0)
+		return (0);
+	n--;
+	while (n--)
 	{
 		if (*(char *)s1 != *(char *)s2)
 		{
-			return (*(char *)s1 - *(char *)s2);
+			return (*(unsigned char *)s1 - *(unsigned char *)s2);
 		}
 		s1++;
 		s2++;
-		n--;
 	}
-	return (*(char *)s1 - *(char *)s2);
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 /*
-#include <string.h>
 int	main()
 {
 	char *s1 = "aaaaab";
 	char *s2 = "aaaa";
-	printf("%d", ft_memcmp(s1, s2, 6));
-}*/
+	printf("%d", ft_memcmp("abcdefghij", "abcdefgxyz", 7));
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:49:06 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/13 15:23:21 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:17:10 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,23 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	void	*o_dst;
+	char	*s1;
+	char	*s2;
 
-	o_dst = dst;
-	while (len > 0)
+	s1 = (char *)dst;
+	s2 = (char *)src;
+	if (!dst && !src)
+		return (0);
+	if (dst > src)
 	{
-		*(char *)dst = *(char *)src;
-		dst++;
-		src++;
-		len--;
+		while (len--)
+			s1[len] = s2[len];
 	}
-	return (o_dst);
+	else
+		ft_memcpy(dst, src, len);
+	return (s1);
 }
-
+/*
 #include <string.h>
 int	main()
 {
@@ -37,3 +41,4 @@ int	main()
 
    return(0);
 }
+*/

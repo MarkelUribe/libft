@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:36:59 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/13 16:33:43 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:42:32 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	void *r;
-	
+	void	*r;
+
 	r = b;
 	while (len > 0)
 	{
