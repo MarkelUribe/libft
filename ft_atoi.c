@@ -10,28 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	int	z;
+    int sign;
 
-	z = 0;
-	while (*str != '\0')
-	{
-		if (z == 0 && !(*str >= '0' && *str <= '9') && !(*str == '-'))
-		if (*str != ' ' && *str >= '0' && *str <= '9')
-		{
-			z *= 10;
-			z += *str;
-		}
-	}
-	return (z);
+    z = 0;
+    sign = 1;
+    while (*str == ' ')
+        str++;
+    if (*str == '-')
+    {
+        sign = -1;
+        str++;
+    }
+    while (ft_isdigit(*str))
+    {
+        z *= 10;
+        z += *str - '0';
+        str++;
+    }
+    return (z * sign);
 }
-
-#include <stdio.h>
-#include <stdlib.h>
+/*
 int	main(void)
 {
-	printf("%d", atoi("-3463sdfg  "));
+	printf("%d", ft_atoi("  -3463sdfg"));
 	return (0);
 }
-
+*/
