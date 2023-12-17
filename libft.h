@@ -12,8 +12,10 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int		ft_atoi(const char *str);
+void    *ft_calloc(size_t num, size_t size);
 void	ft_bzero(char *s, size_t n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
