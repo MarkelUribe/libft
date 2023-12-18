@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 10:12:49 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 13:44:52 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/18 13:53:18 by muribe-l          #+#    #+#             */
+/*   Updated: 2023/12/18 14:07:03 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
-	int		i;
+	char	*r;
 
-	if (!s)
+	r = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!r)
 		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strdup(""));
-	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	i = 0;
-	while ((int)len > i && s[start] != '\0')
-	{
-		str[i] = s[start];
-		i++;
-		start++;
-	}
-	str[i] = '\0';
-	return (str);
+	ft_strlcpy(r, s1, ft_strlen(r));
+	ft_strlcat(r, s2, ft_strlen(r) + ft_strlen(s2) + 1);
+	r[ft_strlen(r) + 1] = '\0';
+	return (r);
 }
-/*
-int	main()
-{
-}*/
