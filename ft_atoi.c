@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 15:38:50 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/13 11:37:02 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:07:33 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,27 @@
 int	ft_atoi(const char *str)
 {
 	int	z;
-    int sign;
+	int	sign;
 
-    z = 0;
-    sign = 1;
-    while (*str == ' ')
-        str++;
-    if (*str == '-')
-    {
-        sign = -1;
-        str++;
-    }
-    while (ft_isdigit(*str))
-    {
-        z *= 10;
-        z += *str - '0';
-        str++;
-    }
-    return (z * sign);
+	z = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\r' || *str == '\f')
+		str++;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		z *= 10;
+		z += *str - '0';
+		str++;
+	}
+	return (z * sign);
 }
 /*
 int	main(void)

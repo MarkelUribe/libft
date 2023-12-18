@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:15:24 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/14 16:43:28 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/18 10:41:05 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 int		ft_atoi(const char *str);
-void    *ft_calloc(size_t num, size_t size);
+void	*ft_calloc(size_t num, size_t size);
 void	ft_bzero(char *s, size_t n);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -36,3 +36,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *s, int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);

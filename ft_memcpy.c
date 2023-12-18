@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:45:43 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/13 15:23:11 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/18 09:48:01 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
 	void	*o_dst;
 
+	if (src == NULL && dst == NULL)
+		return (NULL);
 	o_dst = dst;
 	while (n > 0)
 	{

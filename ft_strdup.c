@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 14:57:48 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 09:47:21 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/18 10:01:43 by muribe-l          #+#    #+#             */
+/*   Updated: 2023/12/18 10:11:36 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	unsigned char	*o_s;
+	char	*str;
 
-	o_s = (unsigned char *)s;
-	while (n--)
-	{
-		if (*o_s == (unsigned char)c)
-			return (o_s);
-		o_s++;
-	}
-	return (NULL);
+	str = (char *)malloc(ft_strlen(s1) + 1);
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	return (str);
 }
-/*
-#include <string.h>
-int	main()
-{
-	char *s = "hoi nekie";
-	printf("%s", ft_memchr("bonjour", 'b', 4));
-}*/

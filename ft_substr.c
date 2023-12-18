@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muribe-l <muribe-l@student.42.fr>          +#+  +:+       +#+        */
+/*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 18:12:23 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 09:58:50 by muribe-l         ###   ########.fr       */
+/*   Created: 2023/12/18 10:12:49 by muribe-l          #+#    #+#             */
+/*   Updated: 2023/12/18 10:57:29 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t num, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	void	*m;
+	char	*str;
+	int		i;
 
-	m = malloc(num * size);
-	if (!m)
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!s || !str)
 		return (NULL);
-	ft_memset(m, 0, size * num);
-	return (m);
+	i = 0;
+	while (len > 0 && s[start] != '\0')
+	{
+		str[i] = s[start];
+		i++;
+		len--;
+		start++;
+	}
+	str[i] = '\0';
+	return (str);
 }
-/*
-int main ()
-{
-	char *m = ft_calloc(5, sizeof(int));
-}
-
-*/
