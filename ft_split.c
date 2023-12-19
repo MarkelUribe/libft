@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:20:55 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/19 14:03:16 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/19 18:51:24 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ static int	ft_wcount(char const *s, char c)
 	return (count);
 }
 
-static void	insertword(char *s, char *a, int len)
+static void	insertword(char *s, char **a, int len)
 {
-	
+	*a = (char *)malloc(sizeof(char) * len + 1);
+	if (*a)
+		ft_strlcpy(*a, s, len + 1);
 }
 
 char	**ft_split(char const *s, char c)
@@ -43,6 +45,7 @@ char	**ft_split(char const *s, char c)
 	char	**array;
 	int		len;
 	int		i;
+	int		j;
 
 	if (!s)
 		return (NULL);
@@ -50,28 +53,32 @@ char	**ft_split(char const *s, char c)
 	if (!array)
 		return (NULL);
 	len = 0;
-	while (*s)
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
 	{
-		if (*s == c)
+		if ((s[i] == c || s[i + 1] == '\0') && len > 0)
 		{
+			insertword((char *)&s[i - len], &array[j], len);
 			len = 0;
-
+			j++;
 		}
-		else
-		{
-
-		}
-		len++;
-		s++;
+		else if (s[i] != c)
+			len++;
+		i++;
 	}
+	array[j] = NULL;
 	return (array);
 }
 
 int	main()
 {
 	int	i = 0;
-	/*char **a = ft_split("ei ze esatek jiji", ' ');
+	char **a = ft_split("  ei ze esatek jiji", ' ');
 	while (a[i] != NULL)
-		printf("%s", a[i]);*/
-	printf("%d", ft_wcount("jiji   zemouzz jaja", ' '));
+	{
+		printf("%s\n", a[i]);
+		i++;
+	}
+		
 }
