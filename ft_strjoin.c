@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:53:18 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 17:37:46 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/19 13:21:36 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_strlcpy(r, s1, len_s1 + 1);
 	ft_strlcat(r, s2, len_s1 + len_s2 + 1);
-	r[ft_strlen(r) + 1] = '\0';
+//	r[ft_strlen(r) + 1] = '\0';
 	return (r);
 }

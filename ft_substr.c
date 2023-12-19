@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 10:12:49 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 13:44:52 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/19 11:39:42 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*str;
 	int		i;
 
-	if (!s)
-		return (NULL);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
 	str = (char *)malloc(sizeof(char) * len + 1);
-	if (!str)
+	if (!str || !s)
 		return (NULL);
 	i = 0;
 	while ((int)len > i && s[start] != '\0')

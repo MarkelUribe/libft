@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:38:39 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/18 19:08:49 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/19 12:57:44 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 /*
 int	main()
 {
-	char *s = "kaixoooo zemous";
-	char *s1 = "ko";
+	char *s = "kaixoooo zer moduz";
+	char *s1 = "kodfgh";
 
 	printf("%s", ft_strtrim(s, s1));
 }*/
