@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:20:55 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/19 18:51:24 by muribe-l         ###   ########.fr       */
+/*   Updated: 2023/12/20 10:57:19 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,38 +47,35 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		j;
 
-	if (!s)
-		return (NULL);
 	array = (char **)malloc(sizeof(char *) * (ft_wcount(s, c) + 1));
-	if (!array)
+	if (!array || !s)
 		return (NULL);
 	len = 0;
 	i = 0;
 	j = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if ((s[i] == c || s[i + 1] == '\0') && len > 0)
-		{
-			insertword((char *)&s[i - len], &array[j], len);
-			len = 0;
-			j++;
-		}
-		else if (s[i] != c)
+		if (s[i] != c)
 			len++;
+		if ((s[i] == c || !s[i + 1]) && len > 0)
+		{
+			insertword((char *)&s[i - len + (s[i] != c)], &array[j++], len);
+			len = 0;
+		}
 		i++;
 	}
 	array[j] = NULL;
 	return (array);
 }
-
+/*
 int	main()
 {
 	int	i = 0;
-	char **a = ft_split("  ei ze esatek jiji", ' ');
+	char **a = ft_split("  ei ze esatek jiji h", ' ');
 	while (a[i] != NULL)
 	{
 		printf("%s\n", a[i]);
 		i++;
 	}
 		
-}
+}*/
