@@ -3,55 +3,71 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
+/*   By: markel <markel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:03:03 by muribe-l          #+#    #+#             */
-/*   Updated: 2023/12/20 12:59:32 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/03 15:18:39 by markel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+static char	*loop(char *s, int n, int digits, int minus)
 {
-	char	*s;
-	int		digits;
-	int		fake;
-	int		minus;
-
-	digits = 0;
-	minus = 0;
-	if (n < 0)
-	{
-		digits++;
-		minus = 1;
-		n = -n;
-	}
-	fake = n;
-	while (fake)
-	{
-		digits++;
-		fake /= 10;
-	}
-	s = (char *)malloc(sizeof(char) * (digits + 1));
-	if (!s)
-		return (NULL);
 	s[digits] = '\0';
 	if (minus)
+		s[0] = '-';
+	while (digits > minus)
 	{
-		ft_strlcat(s, "-", 1);
-		digits--;
-	}
-	while (digits)
-	{
-		s[digits] = (n % 10) + '0';
+		s[digits - 1] = (n % 10) + '0';
 		n /= 10;
 		digits--;
 	}
 	return (s);
 }
 
-int main()
+static int	counter(int temp, int digits)
 {
-	printf("%s", ft_itoa(-345));
+	while (temp)
+	{
+		digits++;
+		temp /= 10;
+	}
+	return (digits);
 }
+
+char	*ft_itoa(int n)
+{
+	char	*s;
+	int		digits;
+	int		minus;
+	int		temp;
+
+	digits = 0;
+	minus = 0;
+	temp = n;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648\0"));
+	if (n <= 0)
+	{
+		digits = 1;
+		if (n < 0)
+		{
+			minus = 1;
+			n = -n;
+			temp = n;
+		}
+	}
+	digits = counter(temp, digits);
+	s = (char *)ft_calloc(sizeof(char), digits + 1);
+	return (loop(s, n, digits, minus));
+}
+/*
+int main()
+{	
+	char	*s;
+	s = ft_itoa(-2147483648);
+	printf("%s\n", s);
+	free(s);
+}
+*/
