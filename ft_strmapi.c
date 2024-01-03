@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 14:36:59 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/03 20:42:03 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/01/03 15:26:05 by markel            #+#    #+#             */
+/*   Updated: 2024/01/03 20:52:33 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	void	*r;
+	int		i;
+	char	*str;
 
-	r = b;
-	while (len > 0)
+	i = 0;
+	str = (char *)ft_calloc(sizeof(char), ft_strlen(s) + 1);
+	while (s[i])
 	{
-		*(char *)b = c;
-		b++;
-		len--;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (r);
+	str[i] = '\0';
+	return (str);
 }
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char str[] ="This is string.h library function";
-   puts(str);
-
-   ft_memset(str,'$',7);
-   puts(str);
-   
-   return(0);
-}*/
