@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:20:55 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/03 20:42:09 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:09:27 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,40 @@ static int	ft_wcount(char const *s, char c)
 	return (count);
 }
 
-static void	insertword(char *s, char **a, int len)
+void	free_all(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+static int	insertword(char *s, char **a, int len, char **array)
 {
 	*a = (char *)malloc(sizeof(char) * len + 1);
-	if (*a)
-		ft_strlcpy(*a, s, len + 1);
+	if (!*a)
+	{
+		free_all(array);
+		return (0);
+	}
+	ft_strlcpy(*a, s, len + 1);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**array;
+	char	**a;
 	int		len;
 	int		i;
 	int		j;
 
-	array = (char **)malloc(sizeof(char *) * (ft_wcount(s, c) + 1));
-	if (!array || !s)
+	a = (char **)malloc(sizeof(char *) * (ft_wcount(s, c) + 1));
+	if (!a || !s)
 		return (NULL);
 	len = 0;
 	i = 0;
@@ -59,13 +77,14 @@ char	**ft_split(char const *s, char c)
 			len++;
 		if ((s[i] == c || !s[i + 1]) && len > 0)
 		{
-			insertword((char *)&s[i - len + (s[i] != c)], &array[j++], len);
+			if (!insertword((char *)&s[i - len + (s[i] != c)], &a[j++], len, a))
+				return (NULL);
 			len = 0;
 		}
 		i++;
 	}
-	array[j] = NULL;
-	return (array);
+	a[j] = NULL;
+	return (a);
 }
 /*
 int	main()

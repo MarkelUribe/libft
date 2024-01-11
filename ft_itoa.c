@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 11:03:03 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/03 20:40:59 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/01/11 12:38:37 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,17 @@ char	*ft_itoa(int n)
 		}
 	}
 	digits = counter(temp, digits);
-	s = (char *)ft_calloc(sizeof(char), digits + 1);
+	s = (char *)malloc(sizeof(char) * digits + 1);
+	if (!s)
+		return (NULL);
 	return (loop(s, n, digits, minus));
 }
-/*
-int main()
-{	
-	char	*s;
-	s = ft_itoa(-2147483648);
-	printf("%s\n", s);
-	free(s);
-}
-*/
+//
+// int main()
+// {	
+// 	char	*s;
+// 	s = ft_itoa(0);
+// 	printf("%s\n", s);
+// 	free(s);
+// }
+//
