@@ -6,11 +6,10 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:13:18 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/02/14 11:26:08 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:29:18 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
 #include "libft.h"
 
 static int	ft_num(long n, int fd)
