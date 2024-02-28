@@ -6,17 +6,17 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 15:15:24 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/02/14 11:29:22 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:49:13 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
 
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 void	*ft_calloc(size_t num, size_t size);
 void	ft_bzero(char *s, size_t n);
 int		ft_isalnum(int c);

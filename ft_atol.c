@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hex.c                                           :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/14 11:25:08 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/02/15 12:11:52 by muribe-l         ###   ########.fr       */
+/*   Created: 2024/02/26 12:30:56 by muribe-l          #+#    #+#             */
+/*   Updated: 2024/02/26 12:51:34 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_hex(long nbr, char *base)
+long	ft_atol(const char *str)
 {
-	int	i;
+	long	z;
+	int		sign;
 
-	i = 0;
-	if (nbr < 16)
+	z = 0;
+	sign = 1;
+	while (*str == ' ' || *str == '\t' || *str == '\n'
+		|| *str == '\v' || *str == '\r' || *str == '\f')
+		str++;
+	if (*str == '-')
 	{
-		write(1, &base[nbr % 16], 1);
-		return (1);
+		sign = -1;
+		str++;
 	}
-	if (nbr > 0)
+	else if (*str == '+')
+		str++;
+	while (ft_isdigit(*str))
 	{
-		i = ft_hex(nbr / 16, base);
-		write(1, &base[nbr % 16], 1);
+		z *= 10;
+		z += *str - '0';
+		str++;
 	}
-	return (i + 1);
+	return (z * sign);
 }

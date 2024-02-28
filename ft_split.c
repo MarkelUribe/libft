@@ -6,7 +6,7 @@
 /*   By: muribe-l <muribe-l@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 11:20:55 by muribe-l          #+#    #+#             */
-/*   Updated: 2024/01/11 12:09:27 by muribe-l         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:42:42 by muribe-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_wcount(char const *s, char c)
 	return (count);
 }
 
-void	free_all(char **array)
+static void	free_all(char **array)
 {
 	int	i;
 
